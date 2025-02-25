@@ -770,36 +770,40 @@ def EventShow():
     global vis2L
     global vis1L
     global camShow
+    global lPos
     while True:
         if temp == 1:
 
             for i in range(0, 36):
                 sleep(5)
+                leshEntity = PhotoImage(file='lesh cam1.png')
+                leshEntityL = Label(vis1L)
+                leshEntityL.image = leshEntity
+                leshEntityL['image'] = leshEntityL.image
 
-                if lPos == 4 or lPos == 6 or lPos == 7 or lPos == 8 or lPos == 9 or lPos == 10:
-                    print('Леший ушел')
-                    leshEntityL.destroy()
 
                 if camShow == 1:
                     if lPos == 1:
                         print("Лешего видно на 1 камере")
-                        leshEntity = PhotoImage(file='lesh cam1.png')
-                        leshEntityL = Label(vis1L)
-                        leshEntityL.image = leshEntity
-                        leshEntityL['image'] = leshEntityL.image
-                        leshEntityL.place(x=-1 , y=-1)
+                        leshEntityL.place(x=1 , y=1)
+
                         if vis2L != 0:
-                            vis2L.destroy
+                            vis2L.destroy()
                             vis2L = 0
                         if vis3L != 0:
-                            vis3L.destroy
+                            vis3L.destroy()
                             vis3L = 0
                         if vis4L != 0:
-                            vis4L.destroy
+                            vis4L.destroy()
                             vis4L = 0
                         if vis5L != 0:
-                            vis5L.destroy
+                            vis5L.destroy()
                             vis5L = 0
+
+                    if lPos == 4 or lPos == 6 or lPos == 7 or lPos == 8 or lPos == 9 or lPos == 10:
+                        print('Леший ушел')
+                        leshEntityL.destroy()
+
 
 
 
@@ -900,6 +904,8 @@ def EventShow():
                         if vis4L != 0:
                             vis4L.destroy
                             vis4L = 0
+
+
 
 
 
