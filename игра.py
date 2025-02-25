@@ -785,14 +785,13 @@ def EventShow():
 
                 if camShow == 1:
                     if lPos == 1:
+                        isLeshOnCam = True
                         print("Лешего видно на 1 камере")
                         leshEntity = PhotoImage(file='lesh cam1.png')
                         leshEntityL = Label(vis1L)
                         leshEntityL.image = leshEntity
                         leshEntityL['image'] = leshEntityL.image
-                        if(isLeshOnCam == False):
-                            leshEntityL.place(x=1 , y=1)
-                            isLeshOnCam = True
+                        leshEntityL.place(x=1 , y=1)
 
                         if vis2L != 0:
                             vis2L.destroy()
@@ -810,7 +809,6 @@ def EventShow():
                     if lPos == 4 or lPos == 6 or lPos == 7 or lPos == 8 or lPos == 9 or lPos == 10:
                         print('Леший ушел')
                         leshEntityL.destroy()
-                        isLeshOnCam = False
 
 
 
