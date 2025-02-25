@@ -6,6 +6,7 @@ import sys
 import os
 #import time
 #test
+print("Hello, World!")
 none = False
 
 cam1 = False
