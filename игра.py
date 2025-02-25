@@ -21,6 +21,8 @@ eyeSpawn1 = False
 eyeSpawn2 = False
 eyeSpawn3 = False
 
+isLeshOnCam = False
+
 eye1 = 0
 eye2 = 0
 eye3 = 0
@@ -772,20 +774,23 @@ def EventShow():
     global vis1L
     global camShow
     global lPos
+    global isLeshOnCam
     while True:
         if temp == 1:
 
             for i in range(0, 36):
                 sleep(5)
-                leshEntity = PhotoImage(file='lesh cam1.png')
-                leshEntityL = Label(vis1L)
-                leshEntityL.image = leshEntity
-                leshEntityL['image'] = leshEntityL.image
+
 
 
                 if camShow == 1:
                     if lPos == 1:
+                        isLeshOnCam = True
                         print("Лешего видно на 1 камере")
+                        leshEntity = PhotoImage(file='lesh cam1.png')
+                        leshEntityL = Label(vis1L)
+                        leshEntityL.image = leshEntity
+                        leshEntityL['image'] = leshEntityL.image
                         leshEntityL.place(x=1 , y=1)
 
                         if vis2L != 0:
