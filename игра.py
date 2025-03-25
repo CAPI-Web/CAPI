@@ -36,7 +36,7 @@ fGame = 0
 
 sounds = [none, "z", "x", "c", "v", "b", "n", "m"]
 soundRound = 1
-lPos = 5
+lPos = 1
 eyePos = 2
 mouthPos = 3
 sound = 0
@@ -57,9 +57,6 @@ vis2L = 0
 vis3L = 0
 vis4L = 0
 vis5L = 0
-
-lVentFile = 'гы'
-leshPhase = 0
 
 
 
@@ -454,8 +451,6 @@ def main():
 
 
 def tick():
-    global leshPhase
-    global lVentFile
     global temp
     global leshLastPos
     global eyeLastPos
@@ -527,12 +522,6 @@ def tick():
 
 
                     elif lPos == 5:
-                        for i in range(0, 4):
-                            istr = str(i)
-                            lVentFile = 'lesh cam5_' + istr + '.png'
-                            print(lVentFile)
-                            leshPhase += 1
-                            sleep(2)
                         lPos = 9
 
 
@@ -778,8 +767,6 @@ def tick():
 
 
 def EventShow():
-    global leshPhase
-    global lVentFile
     global vis5L
     global vis4L
     global vis3L
@@ -907,15 +894,12 @@ def EventShow():
 
                 if camShow == 5:
                     if lPos == 5:
-                        if isLeshOnCam:
-                            leshEntityL.destroy()
                         print("Лешего видно на 5 камере")
-                        leshEntity = PhotoImage(file=lVentFile)
+                        leshEntity = PhotoImage(file='lesh cam5_3.png')
                         leshEntityL = Label(vis5L)
                         leshEntityL.image = leshEntity
                         leshEntityL['image'] = leshEntityL.image
                         leshEntityL.place(x=-1, y=-1)
-                        isLeshOnCam = True
                         if vis1L != 0:
                             vis1L.destroy
                             vis1L = 0
