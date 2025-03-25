@@ -1,3 +1,4 @@
+import time
 from threading import *
 from tkinter import *
 from time import *
@@ -676,7 +677,7 @@ def tick():
                 '''
 
                 superRnd = randint(a, b) #Леший супер
-                if superRnd <= 20:
+                if superRnd <= 90:
                     camBroken = True
                 else:
                     camBroken = False
@@ -793,6 +794,13 @@ def EventShow():
                             leshEntityL['image'] = leshEntityL.image
                             leshEntityL.place(x=1 , y=1)
                             isLeshOnCam = True
+                        if(camStatus[1] == True):
+                            leshEntity = PhotoImage(file='CAPIOS.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
+                            bsodCl.start()
 
                         if vis2L != 0:
                             vis2L.destroy()
@@ -818,11 +826,19 @@ def EventShow():
                 if camShow == 2:
                     if lPos == 2:
                         print("Лешего видно на 2 камере")
-                        leshEntity = PhotoImage(file='lesh cam2.png')
-                        leshEntityL = Label(vis2L)
-                        leshEntityL.image = leshEntity
-                        leshEntityL['image'] = leshEntityL.image
-                        leshEntityL.place(x=-1, y=-1)
+                        if (isLeshOnCam == False):
+                            leshEntity = PhotoImage(file='lesh cam2.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
+                            isLeshOnCam = True
+                        if (camStatus[2] == True):
+                            leshEntity = PhotoImage(file='CAPIOS.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
                         if vis1L != 0:
                             vis1L.destroy
                             vis1L = 0
@@ -839,11 +855,19 @@ def EventShow():
                 if camShow == 3:
                     if lPos == 3:
                         print("Лешего видно на 3 камере")
-                        leshEntity = PhotoImage(file='lesh cam3.png')
-                        leshEntityL = Label(vis3L)
-                        leshEntityL.image = leshEntity
-                        leshEntityL['image'] = leshEntityL.image
-                        leshEntityL.place(x=-1, y=-1)
+                        if (isLeshOnCam == False):
+                            leshEntity = PhotoImage(file='lesh cam3.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
+                            isLeshOnCam = True
+                        if (camStatus[3] == True):
+                            leshEntity = PhotoImage(file='CAPIOS.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
                         if vis1L != 0:
                             vis1L.destroy
                             vis1L = 0
@@ -877,6 +901,12 @@ def EventShow():
                         leshEntityL.image = leshEntity
                         leshEntityL['image'] = leshEntityL.image
                         leshEntityL.place(x=-1, y=-1)
+                        if (camStatus[4] == True):
+                            leshEntity = PhotoImage(file='CAPIOS.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
                         if vis1L != 0:
                             vis1L.destroy
                             vis1L = 0
@@ -895,11 +925,19 @@ def EventShow():
                 if camShow == 5:
                     if lPos == 5:
                         print("Лешего видно на 5 камере")
-                        leshEntity = PhotoImage(file='lesh cam5_3.png')
-                        leshEntityL = Label(vis5L)
-                        leshEntityL.image = leshEntity
-                        leshEntityL['image'] = leshEntityL.image
-                        leshEntityL.place(x=-1, y=-1)
+                        if (isLeshOnCam == False):
+                            leshEntity = PhotoImage(file='lesh cam5_3.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
+                            isLeshOnCam = True
+                        if (camStatus[5] == True):
+                            leshEntity = PhotoImage(file='CAPIOS.png')
+                            leshEntityL = Label(vis1L)
+                            leshEntityL.image = leshEntity
+                            leshEntityL['image'] = leshEntityL.image
+                            leshEntityL.place(x=1, y=1)
                         if vis1L != 0:
                             vis1L.destroy
                             vis1L = 0
@@ -912,6 +950,12 @@ def EventShow():
                         if vis4L != 0:
                             vis4L.destroy
                             vis4L = 0
+def bsodClear():
+    global leshEntityL
+    sleep(5)
+    leshEntityL.destroy()
+    camStatus[1] = False
+
 
 
 
@@ -924,6 +968,7 @@ def EventShow():
 
 
 mainT = Thread(target = main)
+bsodCl = Thread(target = bsodClear)
 tickT = Thread(target = tick)
 eventShowT = Thread(target = EventShow)
 
