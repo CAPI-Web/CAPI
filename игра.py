@@ -676,7 +676,7 @@ def tick():
                 '''
 
                 superRnd = randint(a, b) #Леший супер
-                if superRnd <= 20:
+                if superRnd <= 200:
                     camBroken = True
                 else:
                     camBroken = False
@@ -699,6 +699,9 @@ def tick():
                 print('леший ходьба: ', lPos )
                 #print("Глаз Ходьба: ", eyePos)
                 print("Статус камер (False - рабочая, True - сломанная): ", camStatus[1], camStatus[2], camStatus[3], camStatus[4], camStatus[5])
+
+
+
 
 
 
@@ -775,6 +778,8 @@ def EventShow():
     global camShow
     global lPos
     global isLeshOnCam
+    global camShow
+
     while True:
         if temp == 1:
 
@@ -813,6 +818,16 @@ def EventShow():
                         leshEntityL.destroy()
 
 
+                    if camStatus[1] == True:
+                        print('была попытка отображения краша камеры')
+                        #leshEntityL.destroy
+                        camError = PhotoImage(file='CAPIOS.png')
+                        camErrorL = Label(vis1L)
+                        camErrorL.image = camError
+                        camErrorL['image'] = camErrorL.image
+                        camErrorL.place(x=-1, y=-1)
+
+
 
 
                 if camShow == 2:
@@ -836,6 +851,15 @@ def EventShow():
                             vis5L.destroy
                             vis5L = 0
 
+                        if camStatus[2] == True:
+                            print('была попытка отображения краша камеры')
+                            # leshEntityL.destroy
+                            camError = PhotoImage(file='CAPIOS.png')
+                            camErrorL = Label(vis2L)
+                            camErrorL.image = camError
+                            camErrorL['image'] = camErrorL.image
+                            camErrorL.place(x=-1, y=-1)
+
                 if camShow == 3:
                     if lPos == 3:
                         print("Лешего видно на 3 камере")
@@ -857,39 +881,14 @@ def EventShow():
                             vis5L.destroy
                             vis5L = 0
 
-                if camShow == 4:
-                    if lPos == 4:
-                        num = 1
-                        while num <= 4:
-                            File = '1'
-                            vent_level = 'lesh cam' + File
-                            if num == 1:
-                                File = 2
-                            elif num == 2:
-                                File = 3
-                            elif File == 3:
-                                File = 4
-                            elif File == 4:
-                                break
-                        print("Лешего видно на 4 камере")
-                        leshEntity = PhotoImage(file='le')
-                        leshEntityL = Label(vis3L)
-                        leshEntityL.image = leshEntity
-                        leshEntityL['image'] = leshEntityL.image
-                        leshEntityL.place(x=-1, y=-1)
-                        if vis1L != 0:
-                            vis1L.destroy
-                            vis1L = 0
-                        if vis2L != 0:
-                            vis2L.destroy
-                            vis2L = 0
-                        if vis4L != 0:
-                            vis4L.destroy
-                            vis4L = 0
-                        if vis5L != 0:
-                            vis5L.destroy
-                            vis5L = 0
-
+                        if camStatus[3] == True:
+                            print('была попытка отображения краша камеры')
+                            # leshEntityL.destroy
+                            camError = PhotoImage(file='CAPIOS.png')
+                            camErrorL = Label(vis3L)
+                            camErrorL.image = camError
+                            camErrorL['image'] = camErrorL.image
+                            camErrorL.place(x=-1, y=-1)
 
 
                 if camShow == 5:
@@ -913,12 +912,14 @@ def EventShow():
                             vis4L.destroy
                             vis4L = 0
 
-
-
-
-
-
-
+                        if camStatus[5] == True:
+                            print('была попытка отображения краша камеры')
+                            # leshEntityL.destroy
+                            camError = PhotoImage(file='CAPIOS.png')
+                            camErrorL = Label(vis5L)
+                            camErrorL.image = camError
+                            camErrorL['image'] = camErrorL.image
+                            camErrorL.place(x=-1, y=-1)
 
 
 
