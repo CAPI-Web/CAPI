@@ -676,7 +676,7 @@ def tick():
                 '''
 
                 superRnd = randint(a, b) #Леший супер
-                if superRnd <= 200:
+                if superRnd <= 20:
                     camBroken = True
                 else:
                     camBroken = False
